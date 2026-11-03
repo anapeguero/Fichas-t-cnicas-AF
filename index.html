@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07395d">
+  <meta name="description" content="Catálogo técnico de equipos de activos fijos. Demostración de interfaz con visor de Excel corporativo en OneDrive.">
+  <title>Catálogo Técnico de Equipos | Activos Fijos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" class="sprite" aria-hidden="true">
+    <symbol id="ic-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.4"/><rect x="14" y="3" width="7" height="7" rx="1.4"/><rect x="3" y="14" width="7" height="7" rx="1.4"/><rect x="14" y="14" width="7" height="7" rx="1.4"/></symbol>
+    <symbol id="ic-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></symbol>
+    <symbol id="ic-layers" viewBox="0 0 24 24"><path d="m12 2 9 5-9 5-9-5 9-5Zm-9 10 9 5 9-5M3 17l9 5 9-5"/></symbol>
+    <symbol id="ic-file" viewBox="0 0 24 24"><path d="M6 2h9l5 5v14a1 1 0 0 1-1 1H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z"/><path d="M15 2v6h5M8 12h8M8 16h8"/></symbol>
+    <symbol id="ic-store" viewBox="0 0 24 24"><path d="M4 10v11h16V10M3 9l2-6h14l2 6-2 2-3-2-4 2-4-2-3 2zM9 21v-7h6v7"/></symbol>
+    <symbol id="ic-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M18 5a3 3 0 0 1 0 6m1 3a5 5 0 0 1 3 5v2"/></symbol>
+    <symbol id="ic-scale" viewBox="0 0 24 24"><path d="M12 3v18M5 6h14M2 21h20M5 6l-4 8h8L5 6Zm14 0-4 8h8l-4-8Z"/></symbol>
+    <symbol id="ic-folder" viewBox="0 0 24 24"><path d="M3 6a2 2 0 0 1 2-2h5l2 3h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+    <symbol id="ic-search" viewBox="0 0 24 24"><circle cx="10.7" cy="10.7" r="6.6"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="ic-chevron" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="ic-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></symbol>
+    <symbol id="ic-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9 9a3 3 0 1 1 5 2c-2 1-2 2-2 4m0 3v.1"/></symbol>
+    <symbol id="ic-check" viewBox="0 0 24 24"><path d="m5 12 5 5L20 7"/></symbol>
+    <symbol id="ic-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 17v4h16v-4"/></symbol>
+    <symbol id="ic-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 10v7m0-11v.1"/></symbol>
+    <symbol id="ic-list" viewBox="0 0 24 24"><path d="M9 6h12M9 12h12M9 18h12M3 6h.1M3 12h.1M3 18h.1"/></symbol>
+    <symbol id="ic-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+    <symbol id="ic-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="m10 2-.5 2.1-2 1-2.1-.6L3.5 7l1 2-1 2 1 2-1 2 1.9 2.5 2.1-.6 2 1L10 20h4l.5-2.1 2-1 2.1.6 1.9-2.5-1-2 1-2-1-2 1-2-1.9-2.5-2.1.6-2-1L14 2z"/></symbol>
+    <symbol id="ic-handshake" viewBox="0 0 24 24"><path d="m2 9 5-5 5 2 4-2 6 5-7 7-6-3-4 3-3-3zM9 13l4 4m-1-7 5 5"/></symbol>
+    <symbol id="ic-external" viewBox="0 0 24 24"><path d="M13 4h7v7M20 4l-9 9M20 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h5"/></symbol>
+    <symbol id="ic-x" viewBox="0 0 24 24"><path d="M5 5 19 19M19 5 5 19"/></symbol>
+    <symbol id="ic-upload" viewBox="0 0 24 24"><path d="M12 17V3m-6 6 6-6 6 6M4 16v5h16v-5"/></symbol>
+    <symbol id="ic-refresh" viewBox="0 0 24 24"><path d="M20 6v5h-5M4 18v-5h5M5 10a8 8 0 0 1 14-3l1 4M4 13l1 4a8 8 0 0 0 14-3"/></symbol>
+    <symbol id="ic-link" viewBox="0 0 24 24"><path d="M9 15l6-6M10 6l1-1a5 5 0 1 1 7 7l-2 2M14 18l-1 1a5 5 0 0 1-7-7l2-2"/></symbol>
+  </svg>
+
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-mark"><span>R</span></div>
+        <div class="brand-heading">GRUPO <strong>RAMOS</strong></div>
+      </div>
+      <div class="sidebar-department">Compras – Activos Fijos <small>CAPEX / Equipamiento de tiendas</small></div>
+      <nav id="sidebarNav" class="sidebar-nav" aria-label="Navegación principal">
+        <button type="button" class="nav-link active" data-page="inicio"><svg><use href="#ic-home"/></svg> Inicio</button>
+        <button type="button" class="nav-link" data-page="catalogo"><svg><use href="#ic-layers"/></svg> Catálogo</button>
+        <button type="button" class="nav-link" data-page="fichas"><svg><use href="#ic-file"/></svg> Fichas técnicas</button>
+        <button type="button" class="nav-link" data-page="formatos"><svg><use href="#ic-store"/></svg> Estándares por formato</button>
+        <button type="button" class="nav-link" data-page="proveedores"><svg><use href="#ic-users"/></svg> Proveedores</button>
+        <button type="button" class="nav-link" data-page="comparador"><svg><use href="#ic-scale"/></svg> Comparador <span id="compareCounter" class="nav-count" hidden>0</span></button>
+        <button type="button" class="nav-link" data-page="documentos"><svg><use href="#ic-folder"/></svg> Documentos</button>
+        <div class="nav-divider"></div>
+        <button type="button" class="nav-link" data-page="onedrive"><svg><use href="#ic-file"/></svg> Excel en OneDrive</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="store-art"><svg><use href="#ic-store"/></svg><span>Catálogo técnico<br>de equipos</span></div>
+        <div class="demo-side">Versión demostrativa · AF</div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <div class="top-section">
+        <div class="headline"><h1>Catálogo Técnico de Equipos <span>– Activos Fijos</span></h1><p>Consulta equipos estándar, fichas técnicas y especificaciones por formato de tienda</p></div>
+        <div class="top-actions"><label class="top-search"><svg><use href="#ic-search"/></svg><input id="globalSearch" type="search" placeholder="Buscar en el catálogo..." aria-label="Buscar en el catálogo"></label><button class="icon-button" type="button" id="notificationsBtn" title="Acerca del catálogo"><svg><use href="#ic-bell"/></svg><i class="online-dot"></i></button><button class="icon-button" type="button" id="helpBtn" title="Ayuda"><svg><use href="#ic-help"/></svg></button><div class="avatar" title="Catálogo AF">AF</div></div>
+      </div>
+
+      <div class="demo-ribbon"><span class="ribbon-dot"></span><strong>Vista de demostración</strong><span>Los equipos y modelos mostrados son ejemplos, no estándares aprobados por Grupo Ramos.</span></div>
+
+      <section id="mainDashboard">
+        <div class="kpi-grid">
+          <article class="kpi-card"><span class="kpi-icon"><svg><use href="#ic-layers"/></svg></span><div class="kpi-text"><span>Equipos estandarizados</span><strong id="kpiEquipos">0</strong></div><div class="kpi-foot">Registros del catálogo</div></article>
+          <article class="kpi-card"><span class="kpi-icon"><svg><use href="#ic-store"/></svg></span><div class="kpi-text"><span>Formatos cubiertos</span><strong id="kpiFormatos">0</strong></div><div class="kpi-foot">Formatos de tienda</div></article>
+          <article class="kpi-card"><span class="kpi-icon"><svg><use href="#ic-settings"/></svg></span><div class="kpi-text"><span>Familias de equipos</span><strong id="kpiCategorias">0</strong></div><div class="kpi-foot">Categorías registradas</div></article>
+          <article class="kpi-card"><span class="kpi-icon"><svg><use href="#ic-handshake"/></svg></span><div class="kpi-text"><span>Proveedores registrados</span><strong id="kpiProveedores">0</strong></div><div class="kpi-foot">Datos demostrativos</div></article>
+        </div>
+
+        <section class="filter-card" aria-label="Filtros del catálogo">
+          <label>Formato de tienda<select id="filterFormato"><option value="">Todos los formatos</option></select></label>
+          <label>Categoría<select id="filterCategoria"><option value="">Todas las categorías</option></select></label>
+          <label>Proveedor<select id="filterProveedor"><option value="">Todos los proveedores</option></select></label>
+          <label>Estado<select id="filterEstado"><option value="">Todos</option></select></label>
+          <div class="filter-divider"></div>
+          <label class="filter-search" aria-label="Buscar equipo"><svg><use href="#ic-search"/></svg><input id="tableSearch" type="search" placeholder="Buscar equipo..."></label>
+        </section>
+
+        <div class="main-grid">
+          <section class="card equipment-card">
+            <div class="card-head"><div><h2>Equipos estandarizados</h2><p>Catálogo por formato, categoría y proveedor</p></div><span id="resultCount" class="subtle-badge">0 equipos</span></div>
+            <div class="table-scroller"><table class="equipment-table"><thead><tr><th>Código</th><th>Equipo</th><th>Categoría</th><th>Formato</th><th>Proveedor estándar</th><th>Estado</th></tr></thead><tbody id="equipmentRows"></tbody></table></div>
+            <div id="tableEmpty" class="empty-state" hidden>No se encontraron equipos con estos filtros.</div>
+            <div class="table-note">Selecciona un equipo para consultar su información y documentos.</div>
+          </section>
+
+          <section id="detailPanel" class="card detail-card" aria-label="Detalle de equipo"></section>
+        </div>
+
+        <div class="bottom-grid">
+          <section class="card bottom-card"><div class="bottom-title"><svg><use href="#ic-store"/></svg><div><h2>Estándar por formato</h2><p>Uso del equipo seleccionado por formato de tienda</p></div></div><div id="formatMatrix" class="matrix-wrap"></div></section>
+          <section class="card bottom-card"><div class="bottom-title"><svg><use href="#ic-file"/></svg><div><h2>Documentos asociados</h2><p>Archivos técnicos y documentos de soporte</p></div></div><div id="linkedDocuments"></div></section>
+        </div>
+      </section>
+
+      <section id="secondaryPage" class="secondary-page" hidden></section>
+      <footer class="footer">Catálogo Técnico de Activos Fijos · Interfaz de demostración · Los archivos privados permanecen en Microsoft 365.</footer>
+    </main>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <dialog id="configDialog" class="config-dialog"><form method="dialog" id="excelForm"><div class="dialog-heading"><h2>Vincular Excel de OneDrive</h2><button id="closeConfig" class="icon-button" type="button" aria-label="Cerrar"><svg><use href="#ic-x"/></svg></button></div><p>Agrega una dirección de inserción permitida por Microsoft 365. Se guarda <strong>solo en este navegador</strong>, no en GitHub.</p><label>Enlace de inserción (iframe) o enlace HTTPS de Excel<input id="excelUrlInput" type="url" placeholder="https://...sharepoint.com/..." autocomplete="off"></label><div class="dialog-hint">No uses enlaces que habiliten acceso público a documentos internos. Un enlace normal de OneDrive puede no funcionar dentro del visor; en ese caso utiliza «Abrir en OneDrive».</div><div class="dialog-actions"><button type="button" id="clearExcelUrl" class="btn outline">Quitar enlace guardado</button><button type="submit" class="btn primary">Guardar enlace</button></div></form></dialog>
+
+  <script src="data/catalogo.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
