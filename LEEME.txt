@@ -1,0 +1,3 @@
+Puedes subir PDF a esta carpeta si su contenido está autorizado para publicarse en Internet.
+Para documentos corporativos privados, usa enlaces de OneDrive con permisos existentes en la columna «Ficha técnica» del Excel.
+Los archivos en GitHub Pages público son accesibles para cualquier persona.
